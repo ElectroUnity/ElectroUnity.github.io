@@ -1,20 +1,22 @@
+/* Base Styles */
 body {
     font-family: 'Arial', sans-serif;
-    background: #e0e0e0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-    background: #e0e0e0;
-    box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+    box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
     border-radius: 20px;
     padding: 2em;
     width: 80%;
     max-width: 800px;
+    transition: box-shadow 0.3s, background-color 0.3s;
+    background: var(--container-background);
 }
 
 header, footer {
@@ -24,32 +26,118 @@ header, footer {
 
 h1 {
     font-size: 2.5em;
-    color: #333;
 }
 
 h2 {
     font-size: 1.5em;
-    color: #333;
 }
 
 p, ul {
     font-size: 1em;
-    color: #666;
 }
 
 .card {
-    background: #e0e0e0;
-    box-shadow: inset 8px 8px 16px #bebebe, inset -8px -8px 16px #ffffff;
+    box-shadow: inset 8px 8px 16px var(--shadow-dark), inset -8px -8px 16px var(--shadow-light);
     border-radius: 20px;
     padding: 1.5em;
     margin-bottom: 2em;
+    transition: box-shadow 0.3s, background-color 0.3s;
+    background: var(--container-background);
 }
 
 a {
-    color: #3498db;
     text-decoration: none;
+    color: var(--link-color);
+    transition: color 0.3s;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Light Theme */
+:root {
+    --background-color: #f0f0f3;
+    --text-color: #333;
+    --shadow-dark: #d1d9e6;
+    --shadow-light: #ffffff;
+    --link-color: #3498db;
+    --container-background: #f0f0f3;
+}
+
+body.light {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+body.light .container {
+    background-color: var(--background-color);
+}
+
+body.light .card {
+    background-color: var(--background-color);
+}
+
+/* Dark Theme */
+:root {
+    --background-color-dark: #2e2e2e;
+    --text-color-dark: #e0e0e0;
+    --shadow-dark-dark: #1c1c1c;
+    --shadow-light-dark: #3e3e3e;
+    --link-color-dark: #8e44ad;
+    --container-background-dark: #3b3b3b;
+}
+
+body.dark {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark .container {
+    background-color: var(--container-background-dark);
+    box-shadow: 8px 8px 16px var(--shadow-dark-dark), -8px -8px 16px var(--shadow-light-dark);
+}
+
+body.dark .card {
+    background-color: var(--container-background-dark);
+    box-shadow: inset 8px 8px 16px var(--shadow-dark-dark), inset -8px -8px 16px var(--shadow-light-dark);
+}
+
+body.dark a {
+    color: var(--link-color-dark);
+}
+
+#theme-toggle {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    background-color: var(--container-background);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+body.dark #theme-toggle {
+    background-color: var(--container-background-dark);
+    color: var(--text-color-dark);
+    box-shadow: 4px 4px 8px var(--shadow-dark-dark), -4px -4px 8px var(--shadow-light-dark);
+}
+
+/* Additional Neumorphism Elements */
+.rounded-rectangle {
+    width: 100px;
+    height: 50px;
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    background-color: var(--container-background);
+    margin: 1em auto;
+}
+
+.gradient-line {
+    height: 4px;
+    width: 80%;
+    background: linear-gradient(to right, #3498db, #8e44ad);
+    border-radius: 2px;
+    margin: 1em auto;
 }
